@@ -15,6 +15,12 @@ const DEFAULT_OPTS = {
    */
   triggerEvents: ['mouseenter'],
   /**
+   * The event on the item that cancels the movement of the underline.
+   * The underline will go back to the active item.
+   * @type {Array}
+   */
+  cancelEvents: ['mouseleave'],
+  /**
    * Direction of the underline.
    * Possible values are:
    * 		- "horizontal" (default),
@@ -30,10 +36,11 @@ export default class AwesomeUnderline {
     this.container = containerEl;
     this.opts = Object.assign({}, DEFAULT_OPTS, opts);
     this.items = [];
+    this.activeIndex = 0;
 
     this.updateUnderline();
     this.updateItems();
-    this.goto(0);
+    this.goto(this.activeIndex);
   }
 
   updateOpts(opts) {
@@ -49,7 +56,13 @@ export default class AwesomeUnderline {
 
       this.opts.triggerEvents.forEach(event => {
         item.addEventListener(event, () => {
-          this.goto(i);
+          this.goto(i, false);
+        });
+      });
+
+      this.opts.cancelEvents.forEach(event => {
+        item.addEventListener(event, () => {
+          this.goto(this.activeIndex, false);
         });
       });
     }
@@ -67,9 +80,13 @@ export default class AwesomeUnderline {
     style['transition'] = `${this.opts.speed}s ${direction}, ${this.opts.speed}s ${toScale}`;
   }
 
-  goto(index) {
+  goto(index, active = true) {
     const item = this.items[index];
     const style = this.underline.style;
+
+    if (active) {
+      this.activeIndex = index;
+    }
 
     if (this.opts.direction === 'vertical') {
       const height = item.clientHeight;
