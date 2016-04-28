@@ -1,6 +1,6 @@
 {
   "name": "awesome-underline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An awesome, small, and fast underline animation library, without jQuery.",
   "main": "dist/awesome-underline.js",
   "scripts": {
