@@ -9,8 +9,6 @@
   .underline {
     background-color: black;
     height: 2px;
-    position: absolute;
-    transition: .3s left, .3s width;
   }
 }
 
@@ -23,8 +21,6 @@
 
   .underline {
     background-color: black;
-    position: absolute;
-    transition: .3s top, .3s height;
     width: 2px;
   }
 }

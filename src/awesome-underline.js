@@ -22,6 +22,7 @@ const DEFAULT_OPTS = {
    * @type {String}
    */
   direction: 'horizontal',
+  speed: 0.3,
 }
 
 export default class AwesomeUnderline {
@@ -55,8 +56,15 @@ export default class AwesomeUnderline {
   }
 
   updateUnderline() {
-    // this.underline = this.container.querySelector(this.opts.underline);
-    this.underline = querySelector(this.opts.underline);
+    console.log('here');
+    this.underline = this.container.querySelector(this.opts.underline);
+
+    const style = this.underline.style;
+    style['position'] = 'absolute';
+
+    const direction = this.opts.direction === 'horizontal' ? 'left' : 'top';
+    const toScale = this.opts.direction === 'horizontal' ? 'width' : 'height';
+    style['transition'] = `${this.opts.speed}s ${direction}, ${this.opts.speed}s ${toScale}`;
   }
 
   goto(index) {
