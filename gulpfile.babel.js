@@ -4,6 +4,7 @@ import del from 'del';
 import lint from 'gulp-eslint';
 import browserify from 'browserify';
 import watchify from 'watchify';
+import rename from 'gulp-rename';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
@@ -17,7 +18,7 @@ const sync = browserSync.create();
 const browserifyOpts = {
   debug: true,
   entries: config.scripts.ENTRY,
-  standalone: 'WebSight',
+  standalone: 'Underline',
   transform: [
     'babelify',
   ],
@@ -29,8 +30,14 @@ bundler.on('update', bundle);
 function bundle() {
   let temp = bundler.bundle()
     .on('error', () => console.error())
-    .pipe(source(config.scripts.OUTPUT))
+    .pipe(source(config.scripts.OUTPUT + '.js'))
     .pipe(buffer())
+
+  config.scripts.OUTPUT_DIR.forEach(dir => {
+    temp = temp.pipe(gulp.dest(dir))
+  });
+
+  temp.pipe(rename(config.scripts.OUTPUT + '.min.js'))
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
     .pipe(sourcemaps.write('./maps', { addComment: false }));

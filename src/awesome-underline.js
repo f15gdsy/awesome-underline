@@ -29,7 +29,7 @@ const DEFAULT_OPTS = {
    */
   direction: 'horizontal',
   speed: 0.3,
-}
+};
 
 export default class AwesomeUnderline {
   constructor(containerEl, opts) {
