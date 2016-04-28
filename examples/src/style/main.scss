@@ -1,0 +1,30 @@
+#target {
+  list-style: none;
+
+  .item {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .underline {
+    background-color: black;
+    height: 2px;
+    position: absolute;
+    transition: .3s left, .3s width;
+  }
+}
+
+#vertical {
+  list-style: none;
+
+  .item {
+    margin-bottom: 20px;
+  }
+
+  .underline {
+    background-color: black;
+    position: absolute;
+    transition: .3s top, .3s height;
+    width: 2px;
+  }
+}

@@ -1,0 +1,1 @@
+#target{list-style:none}#target .item{display:inline-block;margin-right:20px}#target .underline{background-color:#000;height:2px;position:absolute;transition:.3s left,.3s width}#vertical{list-style:none}#vertical .item{margin-bottom:20px}#vertical .underline{background-color:#000;position:absolute;transition:.3s top,.3s height;width:2px}
