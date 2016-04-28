@@ -2,7 +2,7 @@
   "name": "awesome-underline",
   "version": "1.0.1",
   "description": "An awesome, small, and fast underline animation library, without jQuery.",
-  "main": "dist/awesome-underline.js",
+  "main": "src/awesome-underline.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp dev"
