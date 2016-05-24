@@ -69,7 +69,6 @@ export default class AwesomeUnderline {
   }
 
   updateUnderline() {
-    console.log('here');
     this.underline = this.container.querySelector(this.opts.underline);
 
     const style = this.underline.style;
